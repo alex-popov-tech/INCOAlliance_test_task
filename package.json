@@ -1,0 +1,93 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint --ext .ts .",
+    "test": "jest --runInBand -c ./jest.config.js"
+  },
+  "dependencies": {
+    "@types/faker": "^5.1.2",
+    "@types/jest": "^26.0.14",
+    "@types/statuses": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "axios": "^0.27.2",
+    "axios-logger": "^2.6.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-no-only-tests": "^2.6.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "faker": "^5.1.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "jest-circus": "^26.6.3",
+    "jest-environment-node": "^26.6.2",
+    "lint-staged": "^10.4.2",
+    "node-fetch": "^3.2.10",
+    "prettier": "^2.1.2",
+    "statuses": "^2.0.1",
+    "ts-jest": "^26.4.0",
+    "typescript": "^4.0.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "airbnb-typescript/base",
+      "plugin:prettier/recommended",
+      "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+      "no-only-tests"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "curly": "error",
+      "import/prefer-default-export": "off",
+      "no-console": "off",
+      "no-await-in-loop": "off",
+      "class-methods-use-this": "off",
+      "no-restricted-syntax": "off",
+      "no-only-tests/no-only-tests": [
+        "error",
+        {
+          "block": [
+            "describe",
+            "It"
+          ],
+          "focus": [
+            "only"
+          ]
+        }
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/naming-convention": "off"
+    },
+    "env": {
+      "jest": true
+    }
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "printWidth": 120
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint",
+      "prettier --check"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
